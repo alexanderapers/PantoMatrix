@@ -284,7 +284,8 @@ def main_worker(rank, world_size, args):
                 logger.info(f"inference on ckpt {k}_val_{v['val']['best']['epoch']}:")
                 trainer.test(v['val']['best']['epoch'])
         other_tools.record_trial(args, trainer.tracker)
-        wandb.log({"fid_test": trainer.tracker["fid"]["test"]["best"]})
+        if "fid" in trainer.tracker.values:
+            wandb.log({"fid_test": trainer.tracker.get("fid", "test", "best")})
         if args.stat == "ts":
             trainer.writer.close()
         else:
