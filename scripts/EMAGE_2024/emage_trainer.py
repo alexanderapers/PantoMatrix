@@ -761,7 +761,7 @@ class CustomTrainer(train.BaseTrainer):
                 # joints_tar = vertices_tar["joints"].detach().cpu().numpy().reshape(1, n, 127*3)[0, :n, :55*3]
                 facial_rec = vertices_rec_face['vertices'].reshape(1, n, -1)[0, :n]
                 facial_tar = vertices_tar_face['vertices'].reshape(1, n, -1)[0, :n]
-                face_vel_loss = self.vel_loss(facial_rec[1:, :] - facial_tar[:-1, :], facial_tar[1:, :] - facial_tar[:-1, :])
+                face_vel_loss = self.vel_loss(facial_rec[1:, :] - facial_rec[:-1, :], facial_tar[1:, :] - facial_tar[:-1, :])
                 l2 = self.reclatent_loss(facial_rec, facial_tar)
                 l2_all += l2.item() * n
                 lvel += face_vel_loss.item() * n
