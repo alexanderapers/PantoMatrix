@@ -79,3 +79,5 @@ rec_ver_weight: 1
 # grad_norm: 1
 epochs: 800
 test_period: 100
+
+debug: True
