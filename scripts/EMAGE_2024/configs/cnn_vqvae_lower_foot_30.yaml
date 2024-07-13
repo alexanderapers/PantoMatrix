@@ -36,7 +36,7 @@ stride: 20
 facial_dims: 100
 word_index_num: 11195
 word_dims: 300
-batch_size: 32
+batch_size: 64
 lr_base: 3e-4
 model: motion_representation
 g_name: VQVAEConvZero
@@ -79,5 +79,3 @@ rec_ver_weight: 1
 # grad_norm: 1
 epochs: 800
 test_period: 100
-
-debug: True
